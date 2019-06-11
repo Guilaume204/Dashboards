@@ -6,7 +6,7 @@ import dash_html_components as html
 
 from plotly.offline import iplot, init_notebook_mode
 init_notebook_mode(connected=True)
-df = pd.read_csv('../data/weather_15_days.csv', skiprows=11, sep=';')
+df = pd.read_csv('./data/weather_15_days.csv', skiprows=11, sep=';')
 
 df['startime'] = df.Year.astype(str) + \
 '-' +df.Month.astype(str) + \
@@ -15,7 +15,6 @@ df['startime'] = df.Year.astype(str) + \
 ':' +df.Minute.astype(str)
 
 df.startime = df.startime.astype('datetime64[ns]')
-df.columnsdf.columns
 
 plots = []
 for measurement in ['Temperature  [2 m above gnd]', 'Relative Humidity  [2 m above gnd]',
@@ -39,5 +38,4 @@ app.layout = html.Div(children=[
 ])
 
 if __name__ == '__main__':
-    app.run_server(port=9977, host='10.0.0.107')
-
+    app.run_server(port=9977, host='127.0.0.1')
